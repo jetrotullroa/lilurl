@@ -2,7 +2,10 @@ class LinksController < ApplicationController
   def index
     @links = Link.all.order(created_at: :desc)
     @link = Link.new
-    @link_latest = Link.last.short_link
+
+    if @links.count != 0
+      @link_latest = Link.last.short_link
+    end
   end
 
   def show
