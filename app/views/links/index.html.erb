@@ -1,1 +1,24 @@
+
 <%= render 'link_form' %>
+<% if flash[:new_link] %>
+  <p class="link-new text-center">Your new link : <strong><%= link_to flash[:new_link], @link_latest, target: '_blank' %></strong></p>
+<% end %>
+
+<div class="link-all ">
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Links</th>
+      </tr>
+    </thead>
+    <% @links.each do |link| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to display_new_short_link(link.short_link), link.short_link, target: '_blank'  %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

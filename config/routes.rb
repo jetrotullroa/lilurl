@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :links, except: :show
+  resources :links, only: [:index, :new, :create]
 
   get '/:short_link' => 'links#show'
   root 'links#index'

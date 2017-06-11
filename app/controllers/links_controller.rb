@@ -2,6 +2,7 @@ class LinksController < ApplicationController
   def index
     @links = Link.all.order(created_at: :desc)
     @link = Link.new
+    @link_latest = Link.last.short_link
   end
 
   def show
@@ -16,7 +17,8 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     if @link.save
-      redirect_to root_url, notice: "Your link was successfully created."
+      redirect_to root_url
+      flash[:new_link] =  "#{display_new_short_link(@link.short_link)}"
     else
       render :index
     end
