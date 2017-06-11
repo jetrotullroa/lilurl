@@ -4,5 +4,4 @@ module LinksHelper
     request.port.blank? ? request.host : "#{request.host}:#{request.port}/#{short_link}"
   end
 
-  
 end
