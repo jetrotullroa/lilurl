@@ -5,7 +5,7 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Link.find(params[:id])
+    @link = Link.find_by(short_link: params[:short_link])
     redirect_to @link.original_link
   end
 
@@ -21,16 +21,6 @@ class LinksController < ApplicationController
       render :index
     end
   end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def delete
-  end
-
 
   private
 
