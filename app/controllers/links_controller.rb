@@ -10,7 +10,10 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find_by(short_link: params[:short_link])
-    redirect_to @link.original_link
+    if redirect_to @link.original_link
+      @link.visit_count += 1
+      @link.save
+    end
   end
 
   def new
