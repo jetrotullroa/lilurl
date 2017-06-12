@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :links, only: [:index, :new, :create]
 
   get '/:short_link' => 'links#show'
