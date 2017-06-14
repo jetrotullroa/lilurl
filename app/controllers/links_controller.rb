@@ -17,6 +17,7 @@ class LinksController < ApplicationController
     @link = Link.find_by(short_link: params[:short_link])
     if redirect_to @link.original_link
       @link.visit_count += 1
+      @link.visitor << current_user.id
       @link.save
     end
   end
@@ -34,8 +35,9 @@ class LinksController < ApplicationController
 
 
     if @link.save
-      redirect_to root_url
       flash[:new_link] =  "#{display_new_short_link(@link.short_link)}"
+      flash[:notice] = "Shortened link has successfully created"
+      redirect_to root_url
     else
       render :index
     end
