@@ -15,7 +15,12 @@
     <tbody>
       <tr>
         <td>
-          <%= link_to display_new_short_link(link.short_link), link.short_link, target: '_blank'  %>
+          <div class="pull-left">
+            <%= link_to display_new_short_link(link.short_link), link.short_link, target: '_blank'  %>
+          </div>
+          <div class="pull-right">
+            <p class="link-user-createdat"><%= get_creators_name(link) %> <%= link_date(link) %></p>
+          </div>
         </td>
       </tr>
     </tbody>
