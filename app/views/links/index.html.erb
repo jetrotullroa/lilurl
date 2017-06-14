@@ -1,7 +1,12 @@
 
 <%= render 'link_form' %>
 <% if flash[:new_link] %>
-  <p class="link-new text-center">Your new link : <strong><%= link_to flash[:new_link], @link_latest, target: '_blank' %></strong></p>
+  <div class="link-new text-center">
+    <p>Your new link : <strong><%= link_to flash[:new_link], @link_latest, target: '_blank' %></strong></p>
+    <% unless user_signed_in? %>
+      <p><%= link_to "Register here", new_user_registration_path %> if you want to manage your shortened links.</p>
+    <% end %>
+  </div>
 <% end %>
 
 <div class="link-all ">
