@@ -1,0 +1,29 @@
+<% if user_signed_in? %>
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>My Links</th>
+      </tr>
+    </thead>
+    <% @my_links.each do |link| %>
+    <tbody>
+      <tr>
+        <% if @my_links.count == 0 %>
+          <td>
+            <p class="text-center link-user-createdat">You have not created any shortened link yet.</p>
+          </td>
+        <% else %>
+          <td>
+            <div class="pull-left">
+              <%= link_to display_new_short_link(link.short_link), link.short_link, target: '_blank'  %>
+            </div>
+            <div class="pull-right col-md-10">
+              <%= link_to link.original_link, link.original_link, target: '_blank' %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+<% end %>

@@ -1,10 +1,14 @@
 class LinksController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
+
 
   def index
     @links = Link.all.order(created_at: :desc)
     @link = Link.new
 
-    if @links.count != 0
+    @my_links = Link.all.where( user_id: current_user ).order( created_at: :desc)
+
+    unless @links.count == 0
       @link_latest = Link.last.short_link
     end
   end

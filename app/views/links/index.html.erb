@@ -9,26 +9,7 @@
   </div>
 <% end %>
 
-<div class="link-all ">
-  <table class="table table-stripped">
-    <thead>
-      <tr>
-        <th>Links</th>
-      </tr>
-    </thead>
-    <% @links.each do |link| %>
-    <tbody>
-      <tr>
-        <td>
-          <div class="pull-left">
-            <%= link_to display_new_short_link(link.short_link), link.short_link, target: '_blank'  %>
-          </div>
-          <div class="pull-right">
-            <p class="link-user-createdat"><%= get_creators_name(link) %> <%= link_date(link) %></p>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
+<div class="link-all">
+<%= render 'my_all_links' %>
+<%= render 'all_links' %>
 </div>
