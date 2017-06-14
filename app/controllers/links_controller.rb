@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
+
   def index
-    @links = Link.all.order(created_at: :desc)
+    @links = Link.all
     @link = Link.new
 
     if @links.count != 0
@@ -21,7 +22,13 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    if user_signed_in?
+      @link = current_user.links.new(link_params)
+    else
+      @link = Link.new(link_params)
+    end
+
+
     if @link.save
       redirect_to root_url
       flash[:new_link] =  "#{display_new_short_link(@link.short_link)}"

@@ -1,5 +1,7 @@
 class Link < ApplicationRecord
 
+  belongs_to :user, optional: true
+
   before_validation :add_url_protocol
   validates :original_link, presence: true
   after_create :generate_short_link
