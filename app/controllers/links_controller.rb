@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 
   def index
-    @links = Link.all
+    @links = Link.all.order(created_at: :desc)
     @link = Link.new
 
     if @links.count != 0
