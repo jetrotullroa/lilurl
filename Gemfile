@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'simple_form'
 gem 'devise'
+gem 'grape'
+gem 'grape-active_model_serializers'
 
 
 group :development, :test do
