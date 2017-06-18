@@ -12,6 +12,7 @@ module Lilurl
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+end
 
 module API
     class Application < Rails::Application
@@ -21,8 +22,6 @@ module API
           resource "*", headers: :any, methods: [:get]
         end
       end
+      config.active_record.raise_in_transactional_callbacks = true
     end
-    config.active_record.raise_in_transactional_callbacks = true
-end
-
 end
