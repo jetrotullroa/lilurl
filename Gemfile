@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'grape'
 gem 'grape-active_model_serializers'
+gem 'rack-cors', :require => 'rack/cors'
 
 
 group :development, :test do
